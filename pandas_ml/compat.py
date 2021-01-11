@@ -6,8 +6,7 @@ import pandas as pd
 from pandas.api.types import is_list_like, is_integer_dtype         # noqa
 
 PANDAS_VERSION = LooseVersion(pd.__version__)
-
-if if PANDAS_VERSION >= LooseVersion('1.1.0'):
+if PANDAS_VERSION >= LooseVersion('1.1.0'):
     _PANDAS_ge_110 = True
 else:
     _PANDAS_ge_110 = False
@@ -22,7 +21,8 @@ if PANDAS_VERSION >= LooseVersion('0.22'):
 else:
     _PANDAS_ge_022 = False
 
-if PANDAS_VERSION <= LooseVersion('0.23'):
+# https://github.com/pandas-ml/pandas-ml/issues/117
+if PANDAS_VERSION > LooseVersion('0.23'):
     from pandas.util import Appender, cache_readonly              # noqa
     import pandas.plotting as plotting                            # noqa
     _PANDAS_ge_023 = True
